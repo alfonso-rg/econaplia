@@ -1,0 +1,15 @@
+{
+  "name": "econaplia-course-site",
+  "version": "1.0.0",
+  "description": "Web del curso Usos de la IA en el trabajo académico",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "check": "node --check server.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2"
+  }
+}

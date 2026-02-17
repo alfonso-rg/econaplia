@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Usos de la IA en el trabajo académico</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <div class="container">
+        <p class="eyebrow">Departamento de Economía Aplicada · Universidad de Murcia</p>
+        <h1>Usos de la IA en el trabajo académico</h1>
+        <p class="lead">
+          Sesión práctica para mejorar productividad, calidad y trazabilidad en tareas docentes e
+          investigadoras con inteligencia artificial.
+        </p>
+        <div class="meta-grid">
+          <div><strong>Fecha</strong><span>Lunes, 23 de febrero</span></div>
+          <div><strong>Ponente</strong><span>Alfonso Rosa García</span></div>
+          <div><strong>Contacto</strong><span><a href="mailto:alfonso.rosa@um.es">alfonso.rosa@um.es</a></span></div>
+        </div>
+        <a class="btn" href="/chatbot.html">Abrir chatbot del curso</a>
+      </div>
+    </header>
+
+    <main class="container stack">
+      <section class="card">
+        <h2>¿Qué te llevas de esta sesión?</h2>
+        <ul>
+          <li>Plantillas de prompts para redactar y revisar textos académicos.</li>
+          <li>Un flujo de trabajo para revisión bibliográfica asistida por IA.</li>
+          <li>Buenas prácticas para evitar alucinaciones y errores de citación.</li>
+          <li>Checklist de uso ético y responsable en el contexto universitario.</li>
+        </ul>
+      </section>
+
+      <section class="card two-col">
+        <div>
+          <h2>Programa sugerido (120 min)</h2>
+          <ol>
+            <li><strong>Fundamentos útiles de IA generativa</strong> (15 min)</li>
+            <li><strong>Prompting aplicado al trabajo académico</strong> (30 min)</li>
+            <li><strong>Taller: revisión bibliográfica y síntesis</strong> (30 min)</li>
+            <li><strong>Automatizaciones sencillas</strong> (20 min)</li>
+            <li><strong>Riesgos, ética y evaluación crítica</strong> (15 min)</li>
+            <li><strong>Q&A + próximos pasos</strong> (10 min)</li>
+          </ol>
+        </div>
+        <div>
+          <h2>Recursos que puedes preparar ya</h2>
+          <ul>
+            <li>Un artículo reciente para practicar resumen crítico.</li>
+            <li>Un borrador (introducción o discusión) para reescritura guiada.</li>
+            <li>Una tabla de resultados para generar interpretaciones alternativas.</li>
+            <li>Una rúbrica de evaluación para convertirla en prompt de feedback.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Despliegue recomendado</h2>
+        <p>
+          Para este proyecto (web estática + endpoint de chatbot con claves privadas), la opción
+          más cómoda es <strong>Vercel</strong> o <strong>Render</strong>:
+        </p>
+        <ul>
+          <li>
+            <strong>Vercel</strong>: despliegue muy rápido desde GitHub, variables de entorno
+            seguras y buena experiencia para páginas de curso.
+          </li>
+          <li>
+            <strong>Render</strong>: sencillo para mantener un servidor Node.js 24/7 con endpoint
+            de chat.
+          </li>
+        </ul>
+        <p>
+          Importante: no pongas nunca las API keys en el frontend. Este proyecto ya está preparado
+          para usarlas en servidor.
+        </p>
+      </section>
+    </main>
+  </body>
+</html>
