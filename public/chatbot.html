@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chatbot del curso · Usos de la IA en el trabajo académico</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <a class="brand" href="/">Usos de la IA en el trabajo académico<small>Facultad de Economía y Empresa · Universidad de Murcia</small></a>
+        <nav class="nav-links">
+          <a href="/">Inicio</a><a href="/introduccion.html">Introducción</a><a href="/usos-academicos.html">Usos académicos</a><a href="/chatbots-asignaturas.html">Chatbots</a><a href="/notebooklm.html">NotebookLM</a><a href="/deep-research.html">Deep Research</a><a class="active" href="/chatbot.html">Demo chatbot</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container chat-layout">
+      <section class="card">
+        <p class="eyebrow">Chatbot del curso</p>
+        <h1>Asistente para “Usos de la IA en el trabajo académico”</h1>
+        <p>Selecciona modelo y pregunta por prompts, revisión bibliográfica, docencia, ética o automatización.</p>
+        <div class="controls">
+          <label for="model">Modelo</label>
+          <select id="model">
+            <option value="gemini-2.0-flash">Gemini 2.0 Flash (gratis)</option>
+            <option value="gpt-4o-mini">GPT 4o mini</option>
+            <option value="gpt-5.2">GPT 5.2</option>
+            <option value="gpt-5-nano">GPT 5 nano</option>
+            <option value="gpt-5.2-thinking-low">GPT 5.2 Thinking (low) · máx 2 prompts/sesión</option>
+          </select>
+          <button id="clearBtn" class="btn secondary" type="button">Limpiar chat</button>
+        </div>
+        <p id="thinkingInfo" class="thinking-info"></p>
+      </section>
+
+      <section class="chat-window card" id="chatWindow" aria-live="polite">
+        <article class="msg assistant">
+          <p>Hola. Este asistente está especializado en trabajo académico en economía aplicada.</p>
+        </article>
+      </section>
+
+      <form id="chatForm" class="chat-form card">
+        <label class="sr-only" for="question">Escribe tu pregunta</label>
+        <textarea id="question" rows="3" placeholder="Escribe aquí tu pregunta..." required></textarea>
+        <button class="btn primary" type="submit">Enviar</button>
+      </form>
+    </main>
+  <script src="/chatbot.js" defer></script>
+  </body>
+</html>
