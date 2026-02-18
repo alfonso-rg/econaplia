@@ -18,7 +18,15 @@ const MODEL_CONFIGS = {
   'gemini-2.0-flash': {
     provider: 'gemini'
   },
+  'gpt-4o-mini': {
+    provider: 'openai',
+    reasoningEffort: null
+  },
   'gpt-5.2': {
+    provider: 'openai',
+    reasoningEffort: null
+  },
+  'gpt-5-nano': {
     provider: 'openai',
     reasoningEffort: null
   },

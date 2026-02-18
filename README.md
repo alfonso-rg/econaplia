@@ -2,57 +2,37 @@
 
 Sitio web para la sesión del **Departamento de Economía Aplicada (Universidad de Murcia)**.
 
-Incluye:
-- Portada del curso (`/`).
-- Subpágina con chatbot del curso (`/chatbot.html`).
-- Backend Node.js con endpoint `/api/chat` para usar **GPT 5.2**, **GPT 5.2 Thinking (low)** y **Gemini 2.0 Flash (gratuito)** sin exponer claves en frontend.
+## Páginas incluidas
+- `/` portada integrada con navegación del curso.
+- `/introduccion.html` modelos, agentes, sistemas de agentes, benchmarks y evolución.
+- `/usos-academicos.html` mapa de usos de IA en investigación/docencia.
+- `/chatbots-asignaturas.html` guía detallada para crear chatbots de asignatura.
+- `/notebooklm.html` ventajas, casos y cautelas de NotebookLM.
+- `/deep-research.html` uso práctico y validación de Deep Research.
+- `/chatbot.html` demo técnica del chatbot con varios modelos.
 
-## Datos del curso
-- **Título**: Usos de la IA en el trabajo académico
-- **Fecha**: lunes, 23 de febrero
-- **Ponente**: Alfonso Rosa García
-- **Contacto**: alfonso.rosa@um.es
+## Carpeta de documentos
+- Se ha creado `documents/` para alojar los PDF de talleres anteriores.
+- En esta copia del repositorio aún no aparecen los PDF, por lo que se dejó la estructura preparada para incorporarlos en cuanto estén disponibles.
 
-## Requisitos
-- Node.js 18+ (recomendado 20+)
+## Chatbot (backend)
+- Endpoint: `POST /api/chat`
+- Modelos: `gemini-2.0-flash`, `gpt-4o-mini`, `gpt-5.2`, `gpt-5-nano`, `gpt-5.2-thinking-low`
+- El modelo `gpt-5.2-thinking-low` está limitado a **2 prompts por sesión**.
 
 ## Instalación local
 ```bash
 npm install
 cp .env.example .env
-# Añade tus claves en .env
 npm start
 ```
-
-Abrir: `http://localhost:3000`
 
 ## Variables de entorno
 - `OPENAI_API_KEY`
 - `GEMINI_API_KEY`
 - `PORT` (opcional)
 
-## Despliegue recomendado
-### 1) Render (opción recomendada para esta versión)
-1. Subir repo a GitHub.
-2. Crear nuevo **Web Service** en Render apuntando al repo.
-3. Build command: `npm install`
-4. Start command: `npm start`
-5. Añadir variables de entorno (`OPENAI_API_KEY`, `GEMINI_API_KEY`).
-6. Desplegar.
-
-### 2) Vercel o Netlify
-- Muy buenas opciones para frontend estático.
-- Para el chatbot, conviene adaptar `/api/chat` a funciones serverless antes del despliegue.
-
-## Valor añadido de contenidos en la portada
-- Programa sugerido de 120 minutos.
-- Kit de prompts académicos reutilizable.
-- Flujo de revisión bibliográfica con trazabilidad.
-- Checklist de integridad académica y verificación.
-- Ejercicios prácticos para usar durante la sesión.
-
-
-## Modelos disponibles en el chatbot
-- `gemini-2.0-flash` (gratuito, con fallback automático a `gemini-1.5-flash` si el endpoint no está habilitado en la cuenta).
-- `gpt-5.2` (OpenAI).
-- `gpt-5.2-thinking-low` (OpenAI con razonamiento `low`, limitado a **2 prompts por sesión**).
+## Render
+- Branch: la rama donde esté este código (por ejemplo `main` o `work`)
+- Build Command: `npm install`
+- Start Command: `npm start`
