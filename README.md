@@ -5,7 +5,7 @@ Sitio web para la sesión del **Departamento de Economía Aplicada (Universidad 
 Incluye:
 - Portada del curso (`/`).
 - Subpágina con chatbot del curso (`/chatbot.html`).
-- Backend Node.js con endpoint `/api/chat` para usar **OpenAI (pago)** o **Gemini (gratuito)** sin exponer claves en frontend.
+- Backend Node.js con endpoint `/api/chat` para usar **GPT 5.2**, **GPT 5.2 Thinking (low)** y **Gemini 2.0 Flash (gratuito)** sin exponer claves en frontend.
 
 ## Datos del curso
 - **Título**: Usos de la IA en el trabajo académico
@@ -50,3 +50,9 @@ Abrir: `http://localhost:3000`
 - Flujo de revisión bibliográfica con trazabilidad.
 - Checklist de integridad académica y verificación.
 - Ejercicios prácticos para usar durante la sesión.
+
+
+## Modelos disponibles en el chatbot
+- `gemini-2.0-flash` (gratuito, con fallback automático a `gemini-1.5-flash` si el endpoint no está habilitado en la cuenta).
+- `gpt-5.2` (OpenAI).
+- `gpt-5.2-thinking-low` (OpenAI con razonamiento `low`, limitado a **2 prompts por sesión**).

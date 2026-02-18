@@ -166,6 +166,13 @@ h3 {
   padding: 0.45rem;
 }
 
+
+.thinking-info {
+  margin: 0.55rem 0 0;
+  color: #334155;
+  font-size: 0.92rem;
+}
+
 .chat-window {
   min-height: 46vh;
   max-height: 58vh;

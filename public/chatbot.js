@@ -1,10 +1,26 @@
 const chatForm = document.getElementById('chatForm');
 const questionInput = document.getElementById('question');
 const chatWindow = document.getElementById('chatWindow');
-const providerSelect = document.getElementById('provider');
+const modelSelect = document.getElementById('model');
 const clearBtn = document.getElementById('clearBtn');
+const thinkingInfo = document.getElementById('thinkingInfo');
 
+const THINKING_MODEL = 'gpt-5.2-thinking-low';
+const THINKING_LIMIT = 2;
+
+const sessionId = getOrCreateSessionId();
 let history = [];
+let localThinkingUsage = 0;
+
+function getOrCreateSessionId() {
+  const key = 'courseChatSessionId';
+  const existing = sessionStorage.getItem(key);
+  if (existing) return existing;
+
+  const newId = `${Date.now()}-${Math.random().toString(16).slice(2)}`;
+  sessionStorage.setItem(key, newId);
+  return newId;
+}
 
 function addMessage(role, text) {
   const article = document.createElement('article');
@@ -18,17 +34,33 @@ function addMessage(role, text) {
 
 function setFormEnabled(enabled) {
   questionInput.disabled = !enabled;
-  providerSelect.disabled = !enabled;
+  modelSelect.disabled = !enabled;
   chatForm.querySelector('button[type="submit"]').disabled = !enabled;
+}
+
+function updateThinkingInfo() {
+  if (modelSelect.value !== THINKING_MODEL) {
+    thinkingInfo.textContent = '';
+    return;
+  }
+
+  const remaining = Math.max(THINKING_LIMIT - localThinkingUsage, 0);
+  thinkingInfo.textContent = `GPT 5.2 Thinking (low): te quedan ${remaining} de ${THINKING_LIMIT} prompts en esta sesión.`;
 }
 
 clearBtn.addEventListener('click', () => {
   history = [];
+  localThinkingUsage = 0;
   chatWindow.innerHTML = '';
   addMessage(
     'assistant',
     'Chat reiniciado. ¿Sobre qué parte del curso quieres trabajar primero?'
   );
+  updateThinkingInfo();
+});
+
+modelSelect.addEventListener('change', () => {
+  updateThinkingInfo();
 });
 
 chatForm.addEventListener('submit', async (event) => {
@@ -36,6 +68,14 @@ chatForm.addEventListener('submit', async (event) => {
 
   const question = questionInput.value.trim();
   if (!question) return;
+
+  if (modelSelect.value === THINKING_MODEL && localThinkingUsage >= THINKING_LIMIT) {
+    addMessage(
+      'assistant',
+      'Has alcanzado el límite local de 2 prompts para GPT 5.2 Thinking (low). Cambia de modelo o reinicia chat.'
+    );
+    return;
+  }
 
   addMessage('user', question);
   questionInput.value = '';
@@ -49,9 +89,10 @@ chatForm.addEventListener('submit', async (event) => {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        provider: providerSelect.value,
+        model: modelSelect.value,
         question,
-        history
+        history,
+        sessionId
       })
     });
 
@@ -61,6 +102,10 @@ chatForm.addEventListener('submit', async (event) => {
 
     if (!response.ok) {
       addMessage('assistant', data.error || 'Error desconocido del servidor.');
+      if (typeof data.thinkingRemaining === 'number') {
+        localThinkingUsage = THINKING_LIMIT - data.thinkingRemaining;
+      }
+      updateThinkingInfo();
       return;
     }
 
@@ -70,6 +115,15 @@ chatForm.addEventListener('submit', async (event) => {
     history.push({ role: 'user', content: question });
     history.push({ role: 'assistant', content: answer });
     history = history.slice(-8);
+
+    if (modelSelect.value === THINKING_MODEL) {
+      if (typeof data.thinkingRemaining === 'number') {
+        localThinkingUsage = THINKING_LIMIT - data.thinkingRemaining;
+      } else {
+        localThinkingUsage += 1;
+      }
+      updateThinkingInfo();
+    }
   } catch (error) {
     chatWindow.lastElementChild?.remove();
     addMessage('assistant', 'No se pudo conectar con el servidor del chatbot.');
@@ -79,3 +133,5 @@ chatForm.addEventListener('submit', async (event) => {
     questionInput.focus();
   }
 });
+
+updateThinkingInfo();
