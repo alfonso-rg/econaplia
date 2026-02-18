@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chatbot del curso · Usos de la IA en el trabajo académico</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="container chat-layout">
+      <section class="chat-header card">
+        <p class="eyebrow">Chatbot del curso</p>
+        <h1>Asistente para “Usos de la IA en el trabajo académico”</h1>
+        <p>
+          Haz preguntas sobre prompts, revisión bibliográfica, redacción académica, ética o
+          automatización del flujo de trabajo.
+        </p>
+        <div class="controls">
+          <label for="provider">Proveedor del modelo</label>
+          <select id="provider">
+            <option value="gemini">Gemini (gratis)</option>
+            <option value="openai">OpenAI (pago)</option>
+          </select>
+          <button id="clearBtn" class="btn secondary" type="button">Limpiar chat</button>
+          <a class="btn secondary" href="/">Volver a portada</a>
+        </div>
+      </section>
+
+      <section class="chat-window card" id="chatWindow" aria-live="polite">
+        <article class="msg assistant">
+          <p>
+            ¡Hola! Soy el asistente del curso. Puedes empezar con algo como:
+            “Dame un prompt para resumir un paper con foco en metodología e implicaciones de
+            política económica”.
+          </p>
+        </article>
+      </section>
+
+      <form id="chatForm" class="chat-form card">
+        <label class="sr-only" for="question">Escribe tu pregunta</label>
+        <textarea
+          id="question"
+          rows="3"
+          placeholder="Escribe aquí tu pregunta..."
+          required
+        ></textarea>
+        <button class="btn" type="submit">Enviar</button>
+      </form>
+    </main>
+
+    <script src="/chatbot.js" defer></script>
+  </body>
+</html>
