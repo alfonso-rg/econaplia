@@ -18,9 +18,15 @@
         <div class="meta-grid">
           <div><strong>Fecha</strong><span>Lunes, 23 de febrero</span></div>
           <div><strong>Ponente</strong><span>Alfonso Rosa García</span></div>
-          <div><strong>Contacto</strong><span><a href="mailto:alfonso.rosa@um.es">alfonso.rosa@um.es</a></span></div>
+          <div>
+            <strong>Contacto</strong
+            ><span><a href="mailto:alfonso.rosa@um.es">alfonso.rosa@um.es</a></span>
+          </div>
         </div>
-        <a class="btn" href="/chatbot.html">Abrir chatbot del curso</a>
+        <div class="hero-actions">
+          <a class="btn" href="/chatbot.html">Abrir chatbot del curso</a>
+          <a class="btn secondary" href="#materiales">Ver materiales y plantillas</a>
+        </div>
       </div>
     </header>
 
@@ -58,20 +64,69 @@
         </div>
       </section>
 
+      <section class="card" id="materiales">
+        <h2>Materiales de apoyo reutilizables (a partir de talleres previos)</h2>
+        <div class="three-col">
+          <article>
+            <h3>1) Kit de prompts académicos</h3>
+            <ul>
+              <li>Prompt para resumen estructurado (objetivo, método, hallazgos, límites).</li>
+              <li>Prompt para crítica metodológica en economía aplicada.</li>
+              <li>Prompt para convertir notas dispersas en esquema de paper.</li>
+            </ul>
+          </article>
+          <article>
+            <h3>2) Flujo de revisión bibliográfica</h3>
+            <ul>
+              <li>Definición de pregunta + criterios de inclusión/exclusión.</li>
+              <li>Matriz de lectura (autor, método, datos, sesgos, aportación).</li>
+              <li>Síntesis final con trazabilidad y verificación manual.</li>
+            </ul>
+          </article>
+          <article>
+            <h3>3) Integridad y evaluación crítica</h3>
+            <ul>
+              <li>Checklist para detectar alucinaciones y referencias inventadas.</li>
+              <li>Regla de “doble comprobación” antes de entregar textos.</li>
+              <li>Registro de uso de IA para transparencia docente/investigadora.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="card two-col">
+        <div>
+          <h2>Ejercicios prácticos en clase</h2>
+          <ol>
+            <li>Reescribe una introducción en 3 niveles de profundidad.</li>
+            <li>Compara dos prompts para discutir sesgos de respuesta.</li>
+            <li>Extrae hipótesis testables de una revisión narrativa.</li>
+            <li>Genera una rúbrica para evaluar trabajos con apoyo de IA.</li>
+          </ol>
+        </div>
+        <div>
+          <h2>Plantilla de prompt recomendada</h2>
+          <pre class="prompt-box"><code>Actúa como [rol].
+Contexto: [tema y objetivo].
+Material base: [texto/datos].
+Tarea: [acción específica].
+Formato de salida: [estructura].
+Restricciones: [tono, longitud, citas, idioma].
+Verificación: indica supuestos y posibles errores.</code></pre>
+        </div>
+      </section>
+
       <section class="card">
         <h2>Despliegue recomendado</h2>
         <p>
           Para este proyecto (web estática + endpoint de chatbot con claves privadas), la opción
-          más cómoda es <strong>Vercel</strong> o <strong>Render</strong>:
+          más directa es <strong>Render</strong>.
         </p>
         <ul>
+          <li><strong>Render</strong>: ideal para tu backend Node.js sin cambios de arquitectura.</li>
           <li>
-            <strong>Vercel</strong>: despliegue muy rápido desde GitHub, variables de entorno
-            seguras y buena experiencia para páginas de curso.
-          </li>
-          <li>
-            <strong>Render</strong>: sencillo para mantener un servidor Node.js 24/7 con endpoint
-            de chat.
+            <strong>Vercel/Netlify</strong>: muy buenas opciones si migras el endpoint a funciones
+            serverless.
           </li>
         </ul>
         <p>

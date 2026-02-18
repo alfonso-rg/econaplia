@@ -16,22 +16,23 @@
           automatización del flujo de trabajo.
         </p>
         <div class="controls">
-          <label for="provider">Proveedor del modelo</label>
-          <select id="provider">
-            <option value="gemini">Gemini (gratis)</option>
-            <option value="openai">OpenAI (pago)</option>
+          <label for="model">Modelo</label>
+          <select id="model">
+            <option value="gemini-2.0-flash">Gemini 2.0 Flash (gratis)</option>
+            <option value="gpt-5.2">GPT 5.2</option>
+            <option value="gpt-5.2-thinking-low">GPT 5.2 Thinking (low) · máx 2 prompts/sesión</option>
           </select>
           <button id="clearBtn" class="btn secondary" type="button">Limpiar chat</button>
           <a class="btn secondary" href="/">Volver a portada</a>
         </div>
+        <p id="thinkingInfo" class="thinking-info"></p>
       </section>
 
       <section class="chat-window card" id="chatWindow" aria-live="polite">
         <article class="msg assistant">
           <p>
-            ¡Hola! Soy el asistente del curso. Puedes empezar con algo como:
-            “Dame un prompt para resumir un paper con foco en metodología e implicaciones de
-            política económica”.
+            ¡Hola! Puedes elegir entre Gemini gratis, GPT 5.2 o GPT 5.2 thinking (low).
+            Recomendación: usa thinking solo para preguntas complejas.
           </p>
         </article>
       </section>
